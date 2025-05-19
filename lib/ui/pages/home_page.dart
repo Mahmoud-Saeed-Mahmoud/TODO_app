@@ -207,7 +207,10 @@ class _HomePageState extends State<HomePage> {
                   SvgPicture.asset(
                     'images/task.svg',
                     height: 90,
-                    color: primaryClr.withOpacity(0.5),
+                    colorFilter: ColorFilter.mode(
+                      primaryClr.withValues(alpha: 0.5),
+                      BlendMode.srcIn,
+                    ),
                     semanticsLabel: 'Task',
                   ),
                   Padding(
