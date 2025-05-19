@@ -24,10 +24,4 @@ class TaskController extends GetxController {
     await DBHelper.update(id);
     getTasks();
   }
-
-  @override
-  void onReady() {
-    // TODO: implement onReady
-    super.onReady();
-  }
 }
