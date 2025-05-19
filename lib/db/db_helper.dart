@@ -1,5 +1,6 @@
-import 'package:sqflite/sqflite.dart';
 import 'package:flutter/material.dart';
+import 'package:sqflite/sqflite.dart';
+
 import '/models/task.dart';
 
 class DBHelper {
@@ -14,10 +15,10 @@ class DBHelper {
       return;
     } else {
       try {
-        String _path = await getDatabasesPath() + 'task.db';
+        String path = '${await getDatabasesPath()}task.db';
         debugPrint('In database path');
         _db = await openDatabase(
-          _path,
+          path,
           version: _version,
           onCreate: (Database db, int version) async {
             debugPrint('creating database');
@@ -46,21 +47,18 @@ class DBHelper {
 
   static Future<int> delete(Task task) async {
     debugPrint('delete function was called!');
-    return await _db!.delete(
-      _tableName,
-      where: 'id = ?',
-      whereArgs: [
-        task.id,
-      ],
-    );
+    return await _db!.delete(_tableName, where: 'id = ?', whereArgs: [task.id]);
   }
 
   static Future<int> update(int id) async {
     debugPrint('update function was called!');
-    return await _db!.rawUpdate('''
+    return await _db!.rawUpdate(
+      '''
     UPDATE $_tableName
     SET isCompleted = ?
     WHERE id = ?
-    ''', [1, id]);
+    ''',
+      [1, id],
+    );
   }
 }

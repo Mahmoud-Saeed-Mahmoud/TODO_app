@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:get/get.dart';
-import 'package:todo/ui/pages/notification_screen.dart';
+import 'package:get_storage/get_storage.dart';
 
 class ThemeServices {
   final GetStorage _box = GetStorage();

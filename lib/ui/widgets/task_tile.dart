@@ -6,12 +6,9 @@ import '../size_config.dart';
 import '../theme.dart';
 
 class TaskTile extends StatelessWidget {
-  const TaskTile(
-    this.task, {
-    Key? key,
-  }) : super(key: key);
-
   final Task task;
+
+  const TaskTile(this.task, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,18 +18,13 @@ class TaskTile extends StatelessWidget {
           SizeConfig.orientation == Orientation.landscape ? 4.0 : 20.0,
         ),
       ),
-      width: SizeConfig.orientation == Orientation.landscape
-          ? SizeConfig.screenHeight / 2
-          : SizeConfig.screenWidth,
-      margin: EdgeInsets.only(
-        bottom: getProportionateScreenHeight(
-          12,
-        ),
-      ),
+      width:
+          SizeConfig.orientation == Orientation.landscape
+              ? SizeConfig.screenHeight / 2
+              : SizeConfig.screenWidth,
+      margin: EdgeInsets.only(bottom: getProportionateScreenHeight(12)),
       child: Container(
-        padding: const EdgeInsets.all(
-          12.0,
-        ),
+        padding: const EdgeInsets.all(12.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
           color: _getBGClr(task.color),
@@ -54,9 +46,7 @@ class TaskTile extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 12,
-                    ),
+                    const SizedBox(height: 12),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -65,9 +55,7 @@ class TaskTile extends StatelessWidget {
                           color: Colors.grey[200],
                           size: 18,
                         ),
-                        const SizedBox(
-                          width: 12,
-                        ),
+                        const SizedBox(width: 12),
                         Text(
                           '${task.startTime} - ${task.endTime}',
                           style: GoogleFonts.lato(
@@ -79,9 +67,7 @@ class TaskTile extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 12,
-                    ),
+                    const SizedBox(height: 12),
                     Text(
                       task.note!,
                       style: GoogleFonts.lato(
@@ -96,13 +82,11 @@ class TaskTile extends StatelessWidget {
               ),
             ),
             Container(
-              child: Text(''),
-              margin: const EdgeInsets.symmetric(
-                horizontal: 10,
-              ),
+              margin: const EdgeInsets.symmetric(horizontal: 10),
               height: 60,
               width: 0.5,
               color: Colors.grey[200]!.withOpacity(0.7),
+              child: Text(''),
             ),
             RotatedBox(
               quarterTurns: 3,
